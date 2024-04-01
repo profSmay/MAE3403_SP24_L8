@@ -1,0 +1,120 @@
+#Pipe Network
+#The SI units are: m for pipe length, mm for pipe diameter
+#                  L/s for external flow rates
+#                  m of water for pressure head
+#                  m for elevation of node
+#                  Pa*s for dynamic viscosity
+#                  m for pipe roughness
+#                  m of water for specified pressure
+#                  kg/m^3 for density
+#The English units are:  ft for pipe length, in for pipe diameter
+#                        cfs for exteral flow rates
+#                        psi for specified node pressure
+#                        in of water for head loss
+#                        ft for pipe roughness
+#                        lb*s/ft^2 for dynamic viscoisty
+#                        lb/ft^3 for specific gravity
+<Network>
+    units: SI
+</Network>
+<Fluid>
+    name: water
+    mu: 0.00089
+    rho: 1000.0
+</Fluid>
+<Pipe>
+    nodes: (a,b)
+    length: 185
+    diam:  300
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (a,c)
+    length: 100
+    diam:  200
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (b,e)
+    length: 165
+    diam:  200
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (c,d)
+    length: 125
+    diam:  200
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (c,f)
+    length: 100
+    diam:  150
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (d,e)
+    length: 125
+    diam:  200
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (d,g)
+    length: 100
+    diam:  150
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (e,h)
+    length: 100
+    diam:  150
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (f,g)
+    length: 125
+    diam:  250
+    roughness: 0.00025
+</Pipe>
+<Pipe>
+    nodes: (g,h)
+    length: 125
+    diam:  250
+    roughness: 0.00025
+</Pipe>
+<Loop>
+    Name: A
+    Pipes:  'a-b', 'b-e', 'd-e', 'c-d', 'a-c'
+</Loop>
+<Loop>
+    Name: B
+    Pipes:'c-d', 'd-g', 'f-g', 'c-f'
+</Loop>
+<Loop>
+    Name: C
+    Pipes: 'd-e', 'e-h', 'g-h', 'd-g'
+</Loop>
+<Node>
+    Name: a
+    External Flow: 60
+</Node>
+<Node>
+    Name: b
+    Sprinkler: True
+    External Flow: -10
+</Node>
+<Node>
+    Name: d
+    Sprinkler: True
+    External Flow: -20
+</Node>
+<Node>
+    Name: f
+    Sprinkler: True
+    External Flow: -15
+</Node>
+<Node>
+    Name: h
+    Sprinkler: True
+    External Flow: -15
+</Node>

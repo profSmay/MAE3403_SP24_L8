@@ -1,0 +1,41 @@
+# Lines starting with a # character are comments to be ignored
+# You may have comment lines anywhere in the file\
+#
+# Other lines in the file are identified by specific KEYWORDS, followed by data
+# KEYWORDS may include Capital letters, but capitalization will be ignored
+# blank lines are also allowed and should be ignored
+
+# each line stands alone, and there is no required ORDER to the file
+
+title, 'A Fictitious UAV'
+distance_unit,  'inch'
+force_unit, 'lbf'
+modulus, 10000000
+
+tensile_strength,   50000
+shear_strength,  25000
+
+wing_length, 120
+wing_taper,  0.70
+
+#               height    width   
+spar_envelope,  4.0,     3.0    
+
+# distributed loads are a name string, followed by a list of ordered (location, load) pairs.
+# distributed loads may be oriented 'up' or 'aft'
+# there may be multiple distributed load sets in the file
+#  
+dist_up_load, 'Lift', (0,8.5), (20,7.4), (60,6.6), (90,4.2), (110,2.8), (115,2.1), (120,0)
+dist_up_load, 'Fuel', (10,-4),(30,-3)
+dist_aft_load, 'Drag', (0,0.85), (20,0.74), (60,0.66), (90,0.42), (110,0.28), (115,0.21), (120,0)
+
+# point loads are a name string, followed by a single location and load value pair
+# there may be multiple point loads in the file
+#  
+point_up_load, ,'spy stuff', (25, -50)
+point_up_load, 'engine',  (15,-60)
+point_aft_load, 'engine thrust',  (15, -60)
+
+load_factor, 3
+margin_of_safety,  0.25
+
